@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Web Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navigation bar */
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+      padding: 10px 20px;
+    }
+    .navbar a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 12px 16px;
+      text-decoration: none;
+    }
+    .navbar a:hover {
+      background-color: #575757;
+      border-radius: 4px;
+    }
+
+    /* Main body */
+    .content {
+      padding: 40px 20px;
+      min-height: 70vh; /* Push footer down */
+      background-color: #f4f4f4;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <!-- Body -->
+  <div class="content">
+    <h1>Welcome to My Website</h1>
+    <p>This is a simple web page layout with a navbar at the top, 
+       a content section in the middle, and a footer at the bottom.</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>&copy; 2025 My Website | All Rights Reserved</p>
+  </div>
+
+</body>
+</html>

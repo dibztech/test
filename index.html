@@ -9,14 +9,14 @@
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f9f9f9;
-      scroll-behavior: smooth;
+      scroll-behavior: smooth; /* Smooth scroll effect */
     }
 
     /* Navbar */
     .navbar {
       background: linear-gradient(90deg, #2575fc, #6a11cb);
       overflow: hidden;
-      padding: 12px 20px;
+      padding: 14px 20px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       position: sticky;
       top: 0;
@@ -28,7 +28,7 @@
       color: white;
       font-weight: 500;
       text-align: center;
-      padding: 12px 18px;
+      padding: 14px 20px;
       text-decoration: none;
       transition: all 0.3s ease;
     }
@@ -40,28 +40,35 @@
 
     /* Section Styling */
     section {
-      padding: 80px 20px;
+      padding: 120px 20px; /* More space between sections */
       text-align: center;
+      opacity: 0; /* Start hidden for scroll animation */
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
     }
     section h2 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: #333;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     section p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #555;
-      max-width: 800px;
-      margin: 0 auto 30px;
-      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto 35px;
+      line-height: 1.7;
     }
 
     /* Button */
     .btn {
       display: inline-block;
       margin-top: 20px;
-      padding: 14px 30px;
-      font-size: 1rem;
+      padding: 14px 35px;
+      font-size: 1.1rem;
       background: linear-gradient(90deg, #6a11cb, #2575fc);
       color: white;
       border: none;
@@ -81,8 +88,8 @@
       background: linear-gradient(90deg, #6a11cb, #2575fc);
       color: white;
       text-align: center;
-      padding: 18px 0;
-      font-size: 0.9rem;
+      padding: 25px 0;
+      font-size: 0.95rem;
       letter-spacing: 1px;
     }
   </style>
@@ -96,42 +103,43 @@
     <a href="#contact">Contact Us</a>
   </div>
 
-  <!-- Hero / Intro -->
-  <section id="home">
+  <!-- Intro / Hero -->
+  <section id="home" class="fade-section">
     <h1>AR GENIUS LOGISTICS SDN. BHD.</h1>
-    <p>Registration No: 1577213V / 202401031364 <br>
+    <p><strong>Registration No:</strong> 1577213V / 202401031364 <br>
        Incorporated on 1st August 2024, Malaysia</p>
-    <p><strong>Business Activities:</strong> <br>
-       Other Transportation Support Activities (N.E.C.) <br>
+    <p><strong>Business Activities:</strong><br>
+       Other Transportation Support Activities (N.E.C.)<br>
        Warehousing and Storage Services</p>
     <a href="https://wa.me/601155067061" target="_blank" class="btn">Get Quotation</a>
   </section>
 
   <!-- Services Section -->
-  <section id="services" style="background:#eef2f3;">
+  <section id="services" class="fade-section" style="background:#eef2f3;">
     <h2>Our Services</h2>
-    <p>We specialize in providing logistics solutions tailored to your business needs.  
-       Our services include:</p>
-    <p>✅ Transportation Support Activities (N.E.C.) <br>
-       ✅ Warehousing & Storage Solutions <br>
-       ✅ Supply Chain & Distribution Management <br>
-       ✅ Customized Logistics Support</p>
+    <p>We provide comprehensive logistics and supply chain solutions for businesses across Malaysia.  
+       Our core services include:</p>
+    <p>✅ Transportation Support Activities (N.E.C.)<br>
+       ✅ Warehousing & Storage Solutions<br>
+       ✅ Supply Chain & Distribution Management<br>
+       ✅ Customized Logistics Support<br>
+       ✅ Freight Forwarding Assistance</p>
   </section>
 
   <!-- About Section -->
-  <section id="about">
+  <section id="about" class="fade-section">
     <h2>About Us</h2>
-    <p>AR GENIUS LOGISTICS SDN. BHD. is a Malaysia-based logistics company committed to delivering  
-       reliable and efficient transportation support and warehousing solutions.  
-       With our expertise and dedication, we help businesses streamline their supply chain operations  
-       and improve efficiency.</p>
+    <p>Founded in 2024, AR GENIUS LOGISTICS SDN. BHD. is a trusted logistics company in Malaysia.  
+       We specialize in efficient transportation support and warehousing solutions that ensure  
+       smooth, reliable, and cost-effective operations for our clients.  
+       Our mission is to simplify logistics challenges with innovative solutions and excellent service.</p>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" style="background:#eef2f3;">
+  <section id="contact" class="fade-section" style="background:#eef2f3;">
     <h2>Contact Us</h2>
-    <p>📍 Location: Malaysia <br>
-       📞 Phone/WhatsApp: <a href="https://wa.me/601155067061" target="_blank">011-55067061</a> <br>
+    <p>📍 Location: Malaysia<br>
+       📞 Phone/WhatsApp: <a href="https://wa.me/601155067061" target="_blank">011-55067061</a><br>
        ✉️ Email: info@argeniuslogistics.com (example)</p>
     <a href="https://wa.me/601155067061" target="_blank" class="btn">Get Quotation</a>
   </section>
@@ -140,6 +148,24 @@
   <div class="footer">
     <p>&copy; 2025 AR GENIUS LOGISTICS SDN. BHD. | All Rights Reserved</p>
   </div>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const sections = document.querySelectorAll(".fade-section");
+    const options = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 
 </body>
 </html>
